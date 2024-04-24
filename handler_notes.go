@@ -24,7 +24,7 @@ func (cfg *apiConfig) handlerNotesGet(w http.ResponseWriter, r *http.Request, us
 		return
 	}
 
-	respondWithJSON(w, http.StatusOK, postsResp)
+	respondWithJSON(w, 201, postsResp)
 }
 
 func (cfg *apiConfig) handlerNotesCreate(w http.ResponseWriter, r *http.Request, user database.User) {
@@ -65,5 +65,5 @@ func (cfg *apiConfig) handlerNotesCreate(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	respondWithJSON(w, http.StatusCreated, noteResp)
+	respondWithJSON(w, 201, noteResp)
 }
