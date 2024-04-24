@@ -27,7 +27,7 @@ func (cfg *apiConfig) handlerUsersCreate(w http.ResponseWriter, r *http.Request)
 
 	apiKey, err := generateRandomSHA256Hash()
 	if err != nil {
-		respondWithError(w, http.StatusInternalServerError, "Couldn't gen apikey")
+		respondWithError(w, http.StatusInternalServerError, "Couldn't get apikey")
 		return
 	}
 
@@ -57,7 +57,7 @@ func (cfg *apiConfig) handlerUsersCreate(w http.ResponseWriter, r *http.Request)
 		respondWithError(w, http.StatusInternalServerError, "Couldn't convert user")
 		return
 	}
-	respondWithJSON(w, http.StatusCreated, userResp)
+	respondWithJSON(w, 201, userResp)
 }
 
 func generateRandomSHA256Hash() (string, error) {
@@ -80,5 +80,5 @@ func (cfg *apiConfig) handlerUsersGet(w http.ResponseWriter, r *http.Request, us
 		return
 	}
 
-	respondWithJSON(w, http.StatusOK, userResp)
+	respondWithJSON(w, http.StatusCreated, userResp)
 }
